@@ -31,7 +31,7 @@
     	<section id="main">
     		<input type="checkbox" id="toggle-all" ng-model="allchecked" ng-click="checkAllTodo()">
     		<ul id="todo-list">
-    			<li ng-repeat="todo in todos | orderBy:'completed'" ng-class="{completed : todo.completed, editing : todo.editing}" ng-dblclick="todo.editing = true">
+    			<li ng-repeat="todo in todos | filter:statusFilter | orderBy:'completed'" ng-class="{completed : todo.completed, editing : todo.editing}" ng-dblclick="todo.editing = true">
     				<div class="view">
     					<input type="checkbox" class="toggle" ng-model="todo.completed">
     					<label>{{todo.name}}</label>
@@ -46,6 +46,11 @@
 
     	<footer id="footer">
     		<span id="todo-count"><strong>{{remaining}}</strong> taches restantes</span>
+            <ul id="filters">
+                <li><a href="#/" class="selected">Toutes</a></li>
+                <li><a href="#/active">Actives</a></li>
+                <li><a href="#/done">Finies</a></li>
+            </ul>
     	</footer>
     </section>
 
