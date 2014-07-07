@@ -31,7 +31,7 @@
     	<section id="main">
     		<input type="checkbox" id="toggle-all" ng-model="allchecked" ng-click="checkAllTodo()">
     		<ul id="todo-list">
-    			<li ng-repeat="todo in todos" ng-class="{completed : todo.completed, editing : todo.editing}" ng-dblclick="todo.editing = true">
+    			<li ng-repeat="todo in todos | orderBy:'completed'" ng-class="{completed : todo.completed, editing : todo.editing}" ng-dblclick="todo.editing = true">
     				<div class="view">
     					<input type="checkbox" class="toggle" ng-model="todo.completed">
     					<label>{{todo.name}}</label>
