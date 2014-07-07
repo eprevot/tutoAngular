@@ -26,8 +26,8 @@ app.controller('TodoCtrl', function ($scope, filterFilter, $http, $location){
 	if($location.path() == '') {
 		$location.path("/");
 	}
-	$scope.location = $location;
-	$scope.$watch('location.path()', function(path){
+	$scope.locationPath = $location;
+	$scope.$watch('locationPath.path()', function(path){
 		$scope.statusFilter = (path == "/active")? {completed:false} : (path == "/done")? {completed:true} : null;
 	});
 
