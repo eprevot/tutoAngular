@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+  <head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Titre</title>
+
+    <!-- Bootstrap -->
+	<!--<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">-->
+	<!-- Styles from todomvc.com -->
+	<link rel="stylesheet" type="text/css" href="main.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body ng-app='todo'>
+
+    <section id="todoapp" ng-controller="TodoCtrl">
+    	<header id="header">
+    		<h1>Todo List</h1>
+    		<form action="#" id="todo-form" ng-submit="addTodo()">
+    			<input type="text" id="new-todo" placeholder="{{placeholder}}" autofocus autocomplete="off" ng-model="newtodo">
+    		</form>
+    	</header>
+
+    	<section id="main">
+    		<input type="checkbox" id="toggle-all" ng-model="allchecked" ng-click="checkAllTodo()">
+    		<ul id="todo-list">
+    			<li ng-repeat="todo in todos" ng-class="{completed : todo.completed, editing : todo.editing}" ng-dblclick="todo.editing = true">
+    				<div class="view">
+    					<input type="checkbox" class="toggle" ng-model="todo.completed">
+    					<label>{{todo.name}}</label>
+    					<button class="destroy" ng-click="removeTodo($index)"></button>
+    				</div>
+    				<form action="#">
+    					<input type="text" class="edit" ng-model="todo.name" ng-focusout="editTodo(todo)">
+    				</form>
+    			</li>
+    		</ul>
+    	</section>
+
+    	<footer id="footer">
+    		<span id="todo-count"><strong>{{remaining}}</strong> taches restantes</span>
+    	</footer>
+    </section>
+
+	<!-- Angular -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
